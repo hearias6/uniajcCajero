@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8/04/2019 05:09:58 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="edu.uniajc.banco.app.entity.Tarjeta" table="tarjeta" catalog="cajero" optimistic-lock="version">
+        <id name="idTarjeta" type="int">
+            <column name="idTARJETA" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="tipoTarjeta" type="string">
+            <column name="tipo_tarjeta" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" />
+        </property>
+        <property name="bloqueo" type="string">
+            <column name="bloqueo" length="45" />
+        </property>
+        <set name="cuentas" table="cuenta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tarjeta" />
+            </key>
+            <one-to-many class="edu.uniajc.banco.app.entity.Cuenta" />
+        </set>
+    </class>
+</hibernate-mapping>

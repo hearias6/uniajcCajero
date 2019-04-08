@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8/04/2019 05:09:58 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="edu.uniajc.banco.app.entity.Cuenta" table="cuenta" catalog="cajero" optimistic-lock="version">
+        <id name="idCuenta" type="int">
+            <column name="idCUENTA" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="banco" class="edu.uniajc.banco.app.entity.Banco" fetch="select">
+            <column name="id_banco" />
+        </many-to-one>
+        <many-to-one name="tarjeta" class="edu.uniajc.banco.app.entity.Tarjeta" fetch="select">
+            <column name="id_tarjeta" />
+        </many-to-one>
+        <many-to-one name="tipoCuenta" class="edu.uniajc.banco.app.entity.TipoCuenta" fetch="select">
+            <column name="idTipo_cuenta" />
+        </many-to-one>
+        <many-to-one name="tipoProducto" class="edu.uniajc.banco.app.entity.TipoProducto" fetch="select">
+            <column name="id_Tipo_Producto" />
+        </many-to-one>
+        <many-to-one name="usuario" class="edu.uniajc.banco.app.entity.Usuario" fetch="select">
+            <column name="idUsuario" />
+        </many-to-one>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="10" />
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="10" />
+        </property>
+        <property name="monto" type="java.lang.Long">
+            <column name="monto" precision="10" scale="0" />
+        </property>
+        <property name="passwordWeb" type="string">
+            <column name="password_web" length="45" />
+        </property>
+        <property name="estado" type="java.lang.Integer">
+            <column name="estado" />
+        </property>
+        <property name="bloqueo" type="java.lang.Integer">
+            <column name="bloqueo" />
+        </property>
+        <set name="logTrasaccions" table="log_trasaccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_Cuenta" />
+            </key>
+            <one-to-many class="edu.uniajc.banco.app.entity.LogTrasaccion" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8/04/2019 05:09:58 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="edu.uniajc.banco.app.entity.Transacccion" table="transacccion" catalog="cajero" optimistic-lock="version">
+        <id name="idTransacccion" type="int">
+            <column name="idTRANSACCCION" />
+            <generator class="foreign">
+                <param name="property">cajero</param>
+            </generator>
+        </id>
+        <one-to-one name="cajero" class="edu.uniajc.banco.app.entity.Cajero" constrained="true"></one-to-one>
+        <property name="fecha" type="string">
+            <column name="Fecha" length="45" />
+        </property>
+        <property name="hora" type="string">
+            <column name="hora" length="45" />
+        </property>
+        <property name="idCajero" type="java.lang.Integer">
+            <column name="id_cajero" />
+        </property>
+        <property name="debe" type="string">
+            <column name="debe" length="45" />
+        </property>
+        <property name="haber" type="string">
+            <column name="haber" length="45" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

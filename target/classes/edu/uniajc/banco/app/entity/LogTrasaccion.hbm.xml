@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8/04/2019 05:09:58 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="edu.uniajc.banco.app.entity.LogTrasaccion" table="log_trasaccion" catalog="cajero" optimistic-lock="version">
+        <id name="idLogTrasaccion" type="int">
+            <column name="idLOG_TRASACCION" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cuenta" class="edu.uniajc.banco.app.entity.Cuenta" fetch="select">
+            <column name="id_Cuenta" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+        <property name="hora" type="string">
+            <column name="hora" length="45" />
+        </property>
+        <property name="idCajero" type="java.lang.Integer">
+            <column name="id_cajero" />
+        </property>
+        <property name="consignatario" type="string">
+            <column name="consignatario" length="45" />
+        </property>
+        <property name="monto" type="string">
+            <column name="monto" length="45" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
